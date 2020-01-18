@@ -6,7 +6,7 @@
 ## Installing
 
 ```shell
-$ composer require liaosp/arraySearch -vvv
+$ composer require liaosp/array-search -vvv
 ```
 
 ## Usage
