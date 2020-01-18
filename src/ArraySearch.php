@@ -92,6 +92,9 @@ class ArraySearch{
     public function paginate($page=1){
         $this->page = $page;
         $this->common();
+        if(empty($this->arrayData)){
+            return [];
+        }
         $obj =new Pagination($this->arrayData,$this->pageSize,$this->pageConfig);
         $obj->pageNow = $page;
         $this->arrayData =$obj->getItem();
