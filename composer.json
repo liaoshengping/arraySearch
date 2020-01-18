@@ -1,0 +1,19 @@
+{
+    "name": "liaosp\/arraySearch",
+    "description": "Array search, array paging  数组搜索，数组分页 ",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "廖",
+            "email": "1194008361@qq.com"
+        }
+    ],
+    "require": {
+        "phprookiehbb/pagination": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Liaosp\\ArraySearch\\": "src"
+        }
+    }
+}
