@@ -36,6 +36,14 @@ class ArraySearch{
      */
     public $whereIn = array();
 
+    /**
+     * @var array
+     */
+    public $notWhere = array();
+
+    /**
+     * @var array
+     */
     public $pageConfig  = ['style' => 1,'simple'=>false,'allCounts'=>true,'nowAllPage'=>true,'toPage'=>true];
 
     /**
@@ -70,7 +78,18 @@ class ArraySearch{
      * @return $this
      */
     public function whereIn(array $where){
+
         $this->whereIn = array_merge($where,$this->whereIn);
+        return $this;
+
+    }
+
+    /**
+     * @param array $notWhere
+     */
+    public function notWhere(array $notWhere){
+
+        $this->notWhere = array_merge($notWhere,$this->notWhere);
         return $this;
     }
 
@@ -119,6 +138,18 @@ class ArraySearch{
     protected function common(){
         if(empty($this->arrayData)){
             throw new \Exception('数据为空，请调用arrayData 方法初始化数据');
+        }
+
+        if(!empty($this->notWhere)){
+            $this->arrayData = array_filter($this->arrayData, function($var){
+                $bool = true;
+                foreach ($this->notWhere as $key=>$orwehre){
+                    if($var[$key] == $orwehre){
+                        $bool = false;
+                    }
+                }
+                return $bool;
+            });
         }
         if(!empty($this->where)){
             $this->arrayData = array_filter($this->arrayData, function($var){

@@ -66,6 +66,12 @@ orWhere:
 ```
 $data = $obj->arrayData($target)->orWhere(['status'=>1,'id'=>1])->paginate(1);//firstPageData  ，第一页数据。
 ```
+notWhere:
+
+```
+$data = $obj->arrayData($target)->notWhere(['status'=>1,'id'=>1])->paginate(1);//firstPageData  ，第一页数据。
+```
+
 
 
 ## Contributing
